@@ -212,7 +212,7 @@ class WP_GitHub_Updater {
 	 * @return int $version the version number
 	 */
 	public function get_new_version() {
-		$version = get_site_transient( $this->config['slug'].'_new_version' );
+		$version = get_site_transient( $this->config['slug'] );
 
 		if ( $this->overrule_transients() || ( !isset( $version ) || !$version || '' == $version ) ) {
 
@@ -253,7 +253,7 @@ class WP_GitHub_Updater {
 
 			// refresh every 6 hours
 			if ( false !== $version )
-				set_site_transient( $this->config['slug'].'_new_version', $version, 60*60*6 );
+				set_site_transient( $this->config['slug'], $version, 60*60*6 );
 		}
 
 		return $version;
